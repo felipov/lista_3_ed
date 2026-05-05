@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+const int MAX_PLAYERS = 100000;
+
 class Player {
 private:
     int id;
