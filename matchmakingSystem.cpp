@@ -41,7 +41,7 @@ bool Matchmaking::removePlayer(int id) {
 }
 
 bool isScoreGreater(Player player1, Player player2) {
-    return player1.getScore() > player2.getScore()
+    return player1.getScore() > player2.getScore();
 }
 
 void Matchmaking::sortByScoreInsertion() {
@@ -50,10 +50,39 @@ void Matchmaking::sortByScoreInsertion() {
 
         while (j >= 0 && isScoreGreater(players[j], players[i])) {
             players[j + 1] = players[j];
-            j = j - 1;
+            j--;
         }
-        players[j + 1] = players[i]
+        players[j + 1] = players[i];
     }
+}
+
+Player* Matchmaking::formGroup(int groupSize, int delta, int* n) {
+    for (int i = 0; i < size; i++) {
+        int j = i;
+
+        Player* result = new Player[groupSize];
+
+        while (j < size && j - i < groupSize && players[j].getScore() - players[i].getScore() <= delta) {
+            result[j - i] = players[j];
+            j++;
+        }
+
+        if (j - i == groupSize) {
+            for (int k = i; k < size - groupSize; k++) {
+                players[k] = players[k + groupSize];
+            }
+
+            size -= groupSize;
+
+            *n = groupSize;
+            return result;
+        }
+
+        delete[] result;
+    }
+
+    *n = 0;
+    return nullptr;
 }
 
 Player* Matchmaking::getWaitingPlayers(int* n) {
