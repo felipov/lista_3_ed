@@ -1,27 +1,5 @@
 #include "matchmakingSystem.hpp"
 
-// Player
-
-Player::Player(int id, std::string name, int score, int timestamp) : id(id), name(name), score(score), timestamp(timestamp) {}
-
-std::string Player::getName() {
-    return this->name;
-}
-
-int Player::getId() {
-    return this->id;
-}
-
-int Player::getScore() {
-    return this->score;
-}
-
-int Player::getTimestamp() {
-    return this->timestamp;
-}
-
-// Matchmaking
-
 bool Matchmaking::insert(Player player) {
     if (this->size == MAX_PLAYERS) return false;
     this->players[size++] = player;
@@ -39,14 +17,6 @@ bool Matchmaking::removePlayer(int id) {
         }
     }
     return false;
-}
-
-bool Player::operator >(Player player2) {
-    return this->getScore() > player2.getScore();
-}
-
-bool Player::operator >=(Player player2) {
-    return this->getScore() >= player2.getScore();
 }
 
 void Matchmaking::sortByScoreInsertion() {
