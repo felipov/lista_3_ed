@@ -4,6 +4,11 @@
 #include "Player.hpp"
 #include "Matchmaking.hpp"
 
+// Funções para geração dos testes
+
+
+
+// Funcionamento geral do sistema
 int main() {
     // Inicialização do sistema e dos jogadores
     Matchmaking system;
