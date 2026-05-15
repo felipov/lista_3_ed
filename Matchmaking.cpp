@@ -30,7 +30,9 @@ void Matchmaking::sortByScoreInsertion() {
         Player key = players[i];
         int j = i - 1;
 
-        while (j >= 0 && players[j] > key) {
+        while (j >= 0 && (players[j].getScore() > key.getScore() || 
+                        (players[j].getScore() == key.getScore() && 
+                        players[j].getTimestamp() > key.getTimestamp()))) {
             players[j + 1] = players[j];
             j--;
         }
