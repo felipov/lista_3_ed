@@ -40,20 +40,26 @@ int main() {
 
     int n1 = 0;
 
-    system.formGroup(3, 30, &n1);
+    Player* grupo1 = system.formGroup(3, 30, &n1);
     std::cout << "n1 = " << n1 << std::endl;
     system.printWaitingPlayers();
 
     int n2 = 0;
-    system.formGroup(3, 30, &n2);
+    Player* grupo2 = system.formGroup(3, 30, &n2);
     std::cout << "n2 = " << n2 << std::endl;
     system.printWaitingPlayers();
 
     int n3 = 0;
-    Player* result;
-    result = system.getWaitingPlayers(&n3);
+    Player* result = system.getWaitingPlayers(&n3);
     std::cout << "n3 = " << n3 << std::endl;
     delete[] result;
 
     system.printWaitingPlayers();
+
+    if (grupo1 != nullptr) {
+        delete[] grupo1;
+    }
+    if (grupo2 != nullptr) {
+        delete[] grupo2;
+    }
 }
