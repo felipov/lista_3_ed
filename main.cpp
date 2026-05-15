@@ -29,7 +29,7 @@ int main() {
 
     system.printWaitingPlayers();
 
-    bool decision_sort = true;
+    bool decision_sort = false;
     if (decision_sort == false) {
         system.sortByScoreInsertion();
     } else {
@@ -55,6 +55,13 @@ int main() {
     delete[] result;
 
     system.printWaitingPlayers();
+    
+    system.removePlayer(1);
+    system.printWaitingPlayers();
+
+    system.removePlayer(5);
+    system.removePlayer(6);
+    system.printWaitingPlayers();
 
     if (grupo1 != nullptr) {
         delete[] grupo1;
@@ -62,4 +69,5 @@ int main() {
     if (grupo2 != nullptr) {
         delete[] grupo2;
     }
+
 }
