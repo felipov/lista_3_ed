@@ -15,7 +15,7 @@ public:
 
     Player() = default;
     Player(int id, std::string name, int score, int timestamp);
-    ~Player() = default;
+    ~Player();
 
     bool operator >(Player player2);
     bool operator >=(Player player2);

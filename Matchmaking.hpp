@@ -15,8 +15,8 @@ private:
 
 public:
 
-    Matchmaking() = default;
-    ~Matchmaking() = default;
+    Matchmaking();
+    ~Matchmaking();
 
     bool insert(Player player);
     bool removePlayer(int id);

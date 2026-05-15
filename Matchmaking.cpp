@@ -1,7 +1,13 @@
 #include "Matchmaking.hpp"
 
+Matchmaking::Matchmaking() {
+    this->size = 0;
+}
+
+Matchmaking::~Matchmaking() {}
+
 bool Matchmaking::insert(Player player) {
-    if (this->size == MAX_PLAYERS) return false;
+    if (this->size >= MAX_PLAYERS) return false;
     this->players[size++] = player;
     return true;
 }
@@ -59,8 +65,6 @@ Player* Matchmaking::mergeSort(Player* arr, int n) {
             }
         }
     }
-    delete[] left;
-    delete[] right;
     return result;
 }
 
@@ -119,7 +123,15 @@ Player* Matchmaking::getWaitingPlayers(int* n) {
 }
 
 void Matchmaking::printWaitingPlayers() {
-    for (int i = 0; i < size; i++) {
-        std::cout << players[i].getName() << std::endl;
+    std::cout << "Waiting Players" << std::endl;
+    if (size == 0) {
+        std::cout << "(empty)" << std::endl;
     }
+    for (int i = 0; i < size; i++) {
+        std::cout << "[ " << players[i].getId() <<
+         " | " << players[i].getName() << " | " <<
+         players[i].getScore() << " | " <<
+         players[i].getTimestamp() << " ]" << std::endl;
+    }
+    std::cout << std::endl;
 }
