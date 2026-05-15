@@ -29,7 +29,7 @@ int main() {
 
     system.printWaitingPlayers();
 
-    bool decision_sort = false;
+    bool decision_sort = true;
     if (decision_sort == false) {
         system.sortByScoreInsertion();
     } else {

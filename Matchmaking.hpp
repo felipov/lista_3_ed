@@ -22,7 +22,6 @@ public:
     bool removePlayer(int id);
 
     void sortByScoreInsertion();
-    Player* mergeSort(Player* arr, int n);
     void sortByScoreMerge();
 
     Player* formGroup(int groupSize, int delta, int* n);
@@ -32,6 +31,9 @@ public:
     void printWaitingPlayers();
 
     // Outros métodos auxiliares, se necessário
+
+    Player* merge(Player* players1, int n, Player* players2, int m);
+    Player* mergeSort(Player* arr, int n);
 };
 
 #endif

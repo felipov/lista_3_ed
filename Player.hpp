@@ -17,9 +17,6 @@ public:
     Player(int id, std::string name, int score, int timestamp);
     ~Player();
 
-    bool operator >(Player player2);
-    bool operator >=(Player player2);
-
     int getId();
     std::string getName();
     int getScore();

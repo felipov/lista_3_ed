@@ -40,34 +40,61 @@ void Matchmaking::sortByScoreInsertion() {
     }
 }
 
-Player* Matchmaking::mergeSort(Player* arr, int n) {
-    Player* left = nullptr;
-    Player* right = nullptr;
-    if (n > 1) {
-        int mid = n / 2;
-        left = mergeSort(arr, mid);
-        right = mergeSort(arr + mid, n - mid);
-    } else return arr;
+Player* Matchmaking::merge(Player* players1, int n, Player* players2, int m) {
+    Player* aux = new Player[m + n];
 
-    Player* result = new Player[n];
-    int itl = 0;
-    int itr = 0;
-    for (int index = 0; index < n; index++) {
-        if (itl >= n / 2) {
-            result[index] = right[itr++];
-        }
-        else if (itr >= n / 2 + (n % 2)) {
-            result[index] = left[itl++];
+    int i = 0;
+    int j = 0;
+
+    while (i < n && j < m) {
+        if (players1[i].getScore() < players2[j].getScore()) {
+            aux[i + j] = players1[i];
+            i++;
+        } else if (players1[i].getScore() > players2[j].getScore()) {
+            aux[i + j] = players2[j];
+            j++;
         } else {
-            if (left[itl] >= right[itr]) {
-                result[index] = right[itr++];
-            }
-            else if (right[itr] > left[itl]) {
-                result[index] = left[itl++];
+            if (players1[i].getTimestamp() <= players2[j].getTimestamp()) {
+                aux[i + j] = players1[i];
+                i++;
+            } else {
+                aux[i + j] = players2[j];
+                j++;
             }
         }
     }
-    return result;
+
+    while (i < n) {
+        aux[i + j] = players1[i];
+        i++;
+    }
+
+    while (j < m) {
+        aux[i + j] = players2[j];
+        j++;
+    }
+
+    return aux;
+}
+
+Player* Matchmaking::mergeSort(Player* arr, int n) {
+    if (n == 1) {
+        Player* single = new Player[1];
+        single[0] = arr[0];
+        return single;
+    }
+
+    int mid = n / 2;
+
+    Player* left = mergeSort(arr, mid);
+    Player* right = mergeSort(arr + mid, n - mid);
+
+    Player* sorted = merge(left, mid, right, n - mid);
+
+    delete[] left;
+    delete[] right;
+
+    return sorted;
 }
 
 void Matchmaking::sortByScoreMerge() {
