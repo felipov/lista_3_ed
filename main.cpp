@@ -5,7 +5,7 @@
 #include "Matchmaking.hpp"
 
 // Testes do sistema
-void systemTests() {
+void systemTests(bool decisionSort) {
     Matchmaking system;
     Player p1(1, "João", 980, 1);
     Player p2(2, "Maria", 1080, 2);
@@ -24,9 +24,7 @@ void systemTests() {
 
     system.printWaitingPlayers();
 
-    // Escolha: true para insertion sort, false para merge sort
-    bool decision_sort = false;
-    if (decision_sort == false) {
+    if (decisionSort == false) {
         system.sortByScoreInsertion();
     } else {
         system.sortByScoreMerge();
@@ -181,7 +179,7 @@ int main() {
     bool system = true;
 
     if (system == true) {
-        systemTests();
+        systemTests(false);
     } else {
         runPerformanceTests();
     }
