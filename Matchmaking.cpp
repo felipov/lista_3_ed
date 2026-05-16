@@ -164,3 +164,17 @@ void Matchmaking::printWaitingPlayers() {
     }
     std::cout << std::endl;
 }
+
+void Matchmaking::printGroup(Player* group, int n) {
+    std::cout << "Group" << std::endl;
+    if (n == 0) {
+        std::cout << "(empty)" << std::endl;
+    }
+    for (int i = 0; i < n; i++) {
+        std::cout << "[ " << group[i].getId() <<
+        " | " << group[i].getName() << " | " <<
+        group[i].getScore() << " | " <<
+        group[i].getTimestamp() << " ]" << std::endl;
+    }
+    std::cout << std::endl;
+}
