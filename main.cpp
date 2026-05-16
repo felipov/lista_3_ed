@@ -178,7 +178,7 @@ void runPerformanceTests() {
 int main() {
 
     // Escolha o teste que deseja gerar: true para o sistema, false para os testes de desempenho
-    bool system = false;
+    bool system = true;
 
     if (system == true) {
         systemTests();
