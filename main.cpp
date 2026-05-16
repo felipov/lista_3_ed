@@ -109,9 +109,9 @@ auto insertionSortTests(int n) {
 
     delete[] data;
 
-    auto start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::steady_clock::now();
     system_test.sortByScoreInsertion();
-    auto end = std::chrono::high_resolution_clock::now();
+    auto end = std::chrono::steady_clock::now();
 
     auto duration = end - start;
 
@@ -130,9 +130,9 @@ auto mergeSortTests(int n) {
 
     delete[] data;
 
-    auto start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::steady_clock::now();
     system_test.sortByScoreMerge();
-    auto end = std::chrono::high_resolution_clock::now();
+    auto end = std::chrono::steady_clock::now();
 
     auto duration = end - start;
 
@@ -144,23 +144,23 @@ auto mergeSortTests(int n) {
 // Implementação dos testes
 
 void performanceTests(int n) {
-    auto sum_insertion = 0;
-    auto sum_merge = 0;
-    for (int i = 0; i < 10; i++) {
+    double sum_insertion = 0.0;
+    double sum_merge = 0.0;
+    for (int i = 0; i < 5; i++) {
         auto temp_insert = insertionSortTests(n);
         sum_insertion += temp_insert;
     }
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         auto temp_merge = mergeSortTests(n);
         sum_merge += temp_merge;
     }
 
-    auto mean_insertion = sum_insertion / 10;
-    auto mean_merge = sum_merge / 10;
+    auto mean_insertion = sum_insertion / 5.0;
+    auto mean_merge = sum_merge / 5.0;
 
-    std::cout << "Tempo médio gasto pelo Insertion Sort: " << mean_insertion << " ms." << std::endl;
-    std::cout << "Tempo médio gasto pelo Merge Sort: " << mean_merge << " ms." << std::endl;
+    std::cout << "Tempo médio gasto pelo Insertion Sort: " << mean_insertion << " milissegundos." << std::endl;
+    std::cout << "Tempo médio gasto pelo Merge Sort: " << mean_merge << " milissegundos." << std::endl;
     std::cout << std::endl;
 }
 
