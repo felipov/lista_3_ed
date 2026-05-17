@@ -34,7 +34,6 @@ public:
 
     Player* merge(Player* players1, int n, Player* players2, int m);
     Player* mergeSort(Player* arr, int n);
-    void printGroup(Player* group, int n);
 };
 
 #endif

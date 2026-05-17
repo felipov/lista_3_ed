@@ -57,9 +57,6 @@ void systemTests(bool decisionSort) {
     system.removePlayer(6);
     system.printWaitingPlayers();
 
-    system.printGroup(grupo1, n1);
-    system.printGroup(grupo2, n2);
-
     if (grupo1 != nullptr) {
         delete[] grupo1;
     }
